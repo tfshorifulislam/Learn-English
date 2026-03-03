@@ -12,9 +12,22 @@ const wordContainer = (id)=>{
     .then(data => displayWordContainer(data.data))
 }
 
+// word-container display;
 const displayWordContainer = (words)=>{
     const levelWord = document.getElementById('word-container')
     levelWord.innerHTML = ''
+
+    // empty word section;
+    if(words.length === 0){
+        levelWord.innerHTML = `
+                <div class="text-center space-y-5 py-10 font-bangla rounded-lg col-span-full">
+                         <img class="mx-auto" src="./assets/alert-error.png" alt="">
+                        <p class="text-2xl font-medium text-[#79716B]">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+                        <h1 class="text-4xl font-bold ">নেক্সট Lesson এ যান</h1>
+                </div>
+            `
+    }
+
     for(let word of words){
         const card = document.createElement('div')
         card.innerHTML=`
