@@ -22,8 +22,8 @@ const displayWordContainer = (words)=>{
         levelWord.innerHTML = `
                 <div class="text-center space-y-5 py-10 font-bangla rounded-lg col-span-full">
                          <img class="mx-auto" src="./assets/alert-error.png" alt="">
-                        <p class="text-2xl font-medium text-[#79716B]">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
-                        <h1 class="text-4xl font-bold ">নেক্সট Lesson এ যান</h1>
+                        <p class="text-lg md:text-2xl font-medium text-[#79716B]">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+                        <h1 class="text-xl md:text-4xl font-bold ">নেক্সট Lesson এ যান</h1>
                 </div>
             `
     }
