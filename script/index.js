@@ -32,9 +32,9 @@ const displayWordContainer = (words)=>{
         const card = document.createElement('div')
         card.innerHTML=`
         <div class="bg-white py-10 px-5 rounded-sm text-center space-y-4">
-                <h2 class="font-bold text-3xl">${word.word}</h2>
+                <h2 class="font-bold text-3xl">${word.word? word.word : 'শব্দ পাওয়া যায়নি।'}</h2>
                 <p class="font-medium text-lg">Meaning /Pronounciation</p>
-                <p class="font-semibold text-3xl font-bangla">"${word.meaning}/ ${word.pronunciation}"</p>
+                <p class="font-semibold text-3xl font-bangla">"${word.meaning? word.meaning : 'Meaning পাওয়া যায়নি।'}/ ${word.pronunciation? word.pronunciation : 'Pronunciation পাওয়া যায়নি।'}"</p>
 
                 <div class="flex justify-between items-center">
                     <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF90]">
@@ -56,7 +56,7 @@ const displayLesson = (lessons)=>{
     lessonContainer.innerHTML = '';
 
     for(const allLesson of lessons){
-        console.log(allLesson)
+        // console.log(allLesson)
         const btnDiv = document.createElement('div');
         btnDiv.innerHTML =`
                             <button onclick="wordContainer(${allLesson.level_no})" class="btn btn-outline btn-primary">
