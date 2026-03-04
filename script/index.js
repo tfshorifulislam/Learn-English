@@ -111,7 +111,7 @@ const displayWordContainer = (words)=>{
                     <button onclick="showModal(${word.id})" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF90]">
                         <i class="fa-solid fa-circle-info"></i>
                     </button>
-                    <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF90]">
+                    <button onclick="pronounceWord('${word.word}')" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF90]">
                        <i class="fa-solid fa-volume-high"></i>
                     </button>
                 </div>
@@ -170,3 +170,10 @@ searchBtn.addEventListener('click', () => {
             loadingSpinner(false);
         });
 });
+
+
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
