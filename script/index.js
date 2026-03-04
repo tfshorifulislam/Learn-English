@@ -30,19 +30,18 @@ const modalDisplay = (word =>{
     // console.log(word)
     const modalBox = document.getElementById('modal-box')
     modalBox.innerHTML = `
-        <div class = "bg-white py-5 px-5 rounded-md space-y-5">
-            <div>
-            <h2 class="font-bold text-3xl">${word.word} (<i class="fa-solid fa-microphone-lines"></i> :${word.pronunciation})</h2>
-            <h3 class="font-semibold text-xl">Meaning</h3>
-            <p class="font-medium text-lg">${word.meaning}</p>
-            <h2 class="text-lg font-semibold">Example</h2>
-            <p>${word.sentence}</p>
+        <div class = "bg-white py-10 px-5 rounded-md">
+            <div class ="space-y-5">
+            <h2 class="font-bold text-xl md:text-3xl">${word.word} (<i class="fa-solid fa-microphone-lines"></i> :${word.pronunciation})</h2>
+            <h3 class="text-lg font-medium">Meaning</h3>
+            <p class="font-bold text-lg md:text-2xl">${word.meaning}</p>
+            <h2 class="text-lg font-medium">Example</h2>
+            <p class="text-lg font-semibold">${word.sentence}</p>
             <p>সমার্থক শব্দ গুলো</p>
             
-            <div class=" flex flex-wrap md:flex-row space-x-5 space-y-5 text-center">
-            <div class=" flex flex-wrap md:flex-row space-x-5 space-y-5 text-center">${synonyms(word.synonyms)}</div>
-            </div>
-            <div class="modal-action">
+            <button class="grid grid-cols-3 gap-3">${synonyms(word.synonyms)}</button>
+
+            
             <form method="dialog">
             <button class="btn btn-primary">Complete Learning</button>
             </form>
