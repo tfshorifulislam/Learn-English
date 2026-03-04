@@ -11,9 +11,14 @@ const setActiveBtn = (clickBtn)=>{
     clickBtn.classList.add(...activeBtn)
 }
 
+const synonyms = (arr =>{
+    const arrHtml = arr.map((el)=> `<span class="btn">${el}</span>`)
+    return arrHtml.join(' ')
+})
+
 const showModal =(modal =>{
     const url =`https://openapi.programming-hero.com/api/word/${modal}`
-    console.log(url)
+    // console.log(url)
 
     fetch(url)
     .then(res => res.json())
@@ -45,9 +50,7 @@ const modalDisplay = (word =>{
         <p>সমার্থক শব্দ গুলো</p>
         
         <div class=" flex flex-wrap md:flex-row space-x-5 space-y-5 text-center">
-        <button class="bg-gray-200 px-4 py-3  rounded-md ">Enthusiastic</button>
-        <button class="bg-gray-200 px-4 py-3  rounded-md ">excited</button>
-        <button class="bg-gray-200 px-4 py-3  rounded-md mb-5">keen</button>
+            <div class=" flex flex-wrap md:flex-row space-x-5 space-y-5 text-center">${synonyms(word.synonyms)}</div>
         </div>
         <div class="modal-action">
             <form method="dialog">
