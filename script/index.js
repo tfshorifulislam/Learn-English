@@ -11,6 +11,54 @@ const setActiveBtn = (clickBtn)=>{
     clickBtn.classList.add(...activeBtn)
 }
 
+const showModal =(modal =>{
+    const url =`https://openapi.programming-hero.com/api/word/${modal}`
+    console.log(url)
+
+    fetch(url)
+    .then(res => res.json())
+    .then(data => modalDisplay(data.data))
+})
+
+// "word": "Water",
+// "meaning": "পানি",
+// "pronunciation": "ওয়াটার",
+// "level": 1,
+// "sentence": "We need water to live.",
+// "points": 1,
+// "partsOfSpeech": "noun",
+// "synonyms": [
+// "liquid",
+// "H2O",
+// "drink"
+// ],
+const modalDisplay = (word =>{
+    // console.log(word)
+    const modalBox = document.getElementById('modal-box')
+    modalBox.innerHTML = `
+        <div class = "bg-white py-10 px-5 rounded-md space-y-5">
+        <h2 class="font-bold text-3xl">${word.word} (<i class="fa-solid fa-microphone-lines"></i> :${word.pronunciation})</h2>
+        <h3 class="font-semibold text-xl">Meaning</h3>
+        <p class="font-medium text-lg">${word.meaning}</p>
+        <h2 class="text-lg font-semibold">Example</h2>
+        <p>${word.sentence}</p>
+        <p>সমার্থক শব্দ গুলো</p>
+        
+        <div class=" flex flex-wrap md:flex-row space-x-5 space-y-5 text-center">
+        <button class="bg-gray-200 px-4 py-3  rounded-md ">Enthusiastic</button>
+        <button class="bg-gray-200 px-4 py-3  rounded-md ">excited</button>
+        <button class="bg-gray-200 px-4 py-3  rounded-md mb-5">keen</button>
+        </div>
+        <div class="modal-action">
+            <form method="dialog">
+                <button class="btn btn-primary">Complete Learning</button>
+            </form>
+        
+        </div>
+    
+    `
+    document.getElementById('my_modal_5').showModal()
+})
 
 const loaodLesson = ()=>{
     fetch('https://openapi.programming-hero.com/api/levels/all')
@@ -51,7 +99,7 @@ const displayWordContainer = (words)=>{
                 <p class="font-semibold text-3xl font-bangla">"${word.meaning? word.meaning : 'Meaning পাওয়া যায়নি।'}/ ${word.pronunciation? word.pronunciation : 'Pronunciation পাওয়া যায়নি।'}"</p>
 
                 <div class="flex justify-between items-center">
-                    <button onclick="my_modal_5.showModal()" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF90]">
+                    <button onclick="showModal(${word.id})" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF90]">
                         <i class="fa-solid fa-circle-info"></i>
                     </button>
                     <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF90]">
