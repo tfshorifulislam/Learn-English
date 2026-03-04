@@ -1,3 +1,17 @@
+const activeBtn = ['bg-[#422AD5]', 'text-white']
+// click btn identify;
+const setActiveBtn = (clickBtn)=>{
+    const lessonClassBtn = document.querySelectorAll('.lesson-class-btn');
+    lessonClassBtn.forEach(btn =>{
+      btn.classList.remove(...activeBtn)
+      btn.classList.add('btn-outline')
+        
+    })
+    clickBtn.classList.remove('btn-outline')
+    clickBtn.classList.add(...activeBtn)
+}
+
+
 const loaodLesson = ()=>{
     fetch('https://openapi.programming-hero.com/api/levels/all')
     .then(res => res.json())
@@ -59,7 +73,7 @@ const displayLesson = (lessons)=>{
         // console.log(allLesson)
         const btnDiv = document.createElement('div');
         btnDiv.innerHTML =`
-                            <button onclick="wordContainer(${allLesson.level_no})" class="btn btn-outline btn-primary">
+                            <button id="lesson-btn" onclick="wordContainer(${allLesson.level_no});setActiveBtn(this)" class="btn btn-outline btn-primary lesson-class-btn">
                             <i class="fa-solid fa-book-open"></i> Lesson - ${allLesson.level_no}
                             </button>
                             `;
