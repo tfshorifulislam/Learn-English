@@ -10,12 +10,26 @@ const setActiveBtn = (clickBtn)=>{
     clickBtn.classList.remove('btn-outline')
     clickBtn.classList.add(...activeBtn)
 }
+
+// spinner section;
+const loadingSpinner = (loadingElement =>{
+    const loading = document.getElementById('spinner');
+    const wordContainer = document.getElementById('word-container')
+    if(loadingElement === true){
+        loading.classList.remove('hidden');
+        wordContainer.classList.add('hidden')
+    }
+    else{
+        loading.classList.add('hidden');
+        wordContainer.classList.remove('hidden')
+    }
+})
 // synonyms word add;
 const synonyms = (arr =>{
     const arrHtml = arr.map((el)=> `<span class="btn">${el}</span>`)
     return arrHtml.join(' ')
 })
-
+// modal fetch;
 const showModal =(modal =>{
     const url =`https://openapi.programming-hero.com/api/word/${modal}`
     // console.log(url)
@@ -61,6 +75,7 @@ const loaodLesson = ()=>{
 }
 // word-container card function;
 const wordContainer = (id)=>{
+    loadingSpinner(true);
     const url =`https://openapi.programming-hero.com/api/level/${id}`
     // console.log(url)
     fetch(url)
@@ -105,6 +120,7 @@ const displayWordContainer = (words)=>{
         `
         levelWord.appendChild(card)
     }
+    loadingSpinner(false)
 }
 // Data load & display Lesson button section;
 const displayLesson = (lessons)=>{
